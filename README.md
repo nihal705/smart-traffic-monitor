@@ -1,4 +1,4 @@
-# 🚦 Smart Traffic Monitor
+# ![Smart Traffic Monitor](/assets/images/Smart_Traffic_Monitor_Logo1.jpeg) Smart Traffic Monitor
 
 [![Node.js Version](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-blue.svg)](https://mysql.com/)
@@ -87,14 +87,15 @@
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/smart-traffic-monitor.git
+git clone https://github.com/nihalmohammad705-debug/smart-traffic-monitor.git
 cd smart-traffic-monitor
 npm install
-
+```
 
 ## Create a .env file in the root directory:
 
 # Database Configuration (Required)
+```bash
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password_here
@@ -118,73 +119,85 @@ WEATHER_AFFECTS_TRAFFIC=true
 
 # Cities to monitor
 CITIES=Bengaluru,Mumbai,Delhi,Hyderabad,Chennai,Pune,Kolkata,Ahmedabad
+```
 
 
 ## Setup Database
-
-# Login to MySQL
+```bash
+Login to MySQL:
 mysql -u root -p
 
-# Run these commands in MySQL
+Run these commands in MySQL:
 CREATE DATABASE smart_traffic_v2;
 USE smart_traffic_v2;
 SOURCE sql/schema.sql;
 EXIT;
-
+```
 
 
 ## Start Application
-
+```bash
 cd smart-traffic-monitor
 node server.js
 
-## Access the Application
+Access the Application:
 Open your browser and navigate to: http://localhost:3000
+```
 
 
+## How to Use
 
-## How to Use 
-Dashboard Controls
-Control	Action
-Center Map	Resets map view to show all road segments
-Speed Dropdown	Adjust simulation speed (Slow/Normal/Fast)
-Refresh	Reloads all data from server
-City Search	Type city name → Click Search to navigate
-Vehicle Search	Filter vehicles by number plate
-Map Click	Click anywhere on map to show traffic & weather
+### Dashboard Controls
 
-What You See
-Section	Description
-Map	Blue lines = roads, Colored dots = vehicles
-Live Stats	Active vehicles count, average speed, active incidents
-Weather Widget	Current conditions at clicked location
-Vehicle List	All active vehicles with current speed
-Incidents List	Active incidents with severity level
-Analytics Charts	Congestion distribution and speed trends
+| Control | Action |
+|---------|--------|
+| **Center Map** | Resets map view to show all road segments |
+| **Speed Dropdown** | Adjust simulation speed (Slow/Normal/Fast) |
+| **Refresh** | Reloads all data from server |
+| **City Search** | Type city name → Click Search to navigate |
+| **Vehicle Search** | Filter vehicles by number plate |
+| **Map Click** | Click anywhere on map to show traffic & weather |
 
-Vehicle Color Coding
-Vehicle Type	Color	Icon
-BUS	Red	🚌
-TAXI	Orange	🚕
-TRUCK	Purple	🚚
-CAR / AUTO	Blue	🚗
+### What You See
 
+| Section | Description |
+|---------|-------------|
+| **Map** | Blue lines = roads, Colored dots = vehicles |
+| **Live Stats** | Active vehicles count, average speed, active incidents |
+| **Weather Widget** | Current conditions at clicked location |
+| **Vehicle List** | All active vehicles with current speed |
+| **Incidents List** | Active incidents with severity level |
+| **Analytics Charts** | Congestion distribution and speed trends |
+
+### Vehicle Color Coding
+
+| Vehicle Type | Color | Icon |
+|--------------|-------|------|
+| BUS | Red | 🚌 |
+| TAXI | Orange | 🚕 |
+| TRUCK | Purple | 🚚 |
+| CAR / AUTO | Blue | 🚗 |
+
+---
 
 ## 🔑 Optional API Keys Setup
+
 The application works without API keys using mock data. To enable live data:
 
-OpenWeatherMap API (Free)
-Sign up at openweathermap.org
-Navigate to API Keys section
-Copy your key to .env as OPENWEATHER_API_KEY
+### OpenWeatherMap API (Free)
+1. Sign up at [openweathermap.org](https://openweathermap.org)
+2. Navigate to API Keys section
+3. Copy your key to `.env` as `OPENWEATHER_API_KEY`
 
-TomTom API (Free - 2,500 requests/day)
-Sign up at developer.tomtom.com
-Go to API Keys section
-Create new key for Traffic API
-Copy to .env as TOMTOM_API_KEY
+### TomTom API (Free - 2,500 requests/day)
+1. Sign up at [developer.tomtom.com](https://developer.tomtom.com)
+2. Go to API Keys section
+3. Create new key for Traffic API
+4. Copy to `.env` as `TOMTOM_API_KEY`
+
 
 📁 Project Structure
+```bash
 smart-traffic-monitor/
 ├── server.js                 # Main Express server
 ├── package.json             # Dependencies
@@ -210,34 +223,32 @@ smart-traffic-monitor/
 │   └── assets/              # Images
 └── sql/
     └── schema.sql           # Database schema
+```
 
+## 🐛 Troubleshooting
 
-🐛 Troubleshooting
-Issue	Solution
-MySQL connection error	Run net start MySQL80 (Windows) or sudo systemctl start mysql (Linux/Mac)
-Port 3000 already in use	Change PORT in .env file
-Map not loading	Check internet connection
-Vehicles not moving	Check browser console for Socket.IO errors
-Duplicate entry errors	Clear database and re-run schema
-Database Reset
-bash
+| Issue | Solution |
+|-------|----------|
+| **MySQL connection error** | Run `net start MySQL80` (Windows) or `sudo systemctl start mysql` (Linux/Mac) |
+| **Port 3000 already in use** | Change `PORT` in `.env` file |
+| **Map not loading** | Check internet connection |
+| **Vehicles not moving** | Check browser console for Socket.IO errors |
+| **Duplicate entry errors** | Clear database and re-run schema |
+
+### Database Reset
+
+```bash
 mysql -u root -p -e "DROP DATABASE IF EXISTS smart_traffic_v2; CREATE DATABASE smart_traffic_v2;"
 mysql -u root -p smart_traffic_v2 < sql/schema.sql
+```
 
+### 📝 License
+* This project is licensed under the MIT License.
 
-📝 License
-This project is licensed under the MIT License.
-
-
-🙏 Acknowledgments
-Leaflet - Interactive maps
-
-OpenStreetMap - Map tiles
-
-Chart.js - Analytics charts
-
-Socket.IO - Real-time communication
-
-TomTom - Traffic API
-
-OpenWeatherMap - Weather API
+## 🙏 Acknowledgments
+- Leaflet - Interactive maps
+- OpenStreetMap - Map tiles
+- Chart.js - Analytics charts
+- Socket.IO - Real-time communication
+- TomTom - Traffic API
+- OpenWeatherMap - Weather API
